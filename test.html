@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html ng-app="plugshare" lang="en" ng-strict-di>
+  <head>
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-W752VQ4');
+    </script>
+    <style>
+      .async-hide {
+        opacity: 0 !important;
+      }
+    </style>
+    <script>
+      (function (a, s, y, n, c, h, i, d, e) {
+        s.className += ' ' + y;
+        h.start = 1 * new Date();
+        h.end = i = function () {
+          s.className = s.className.replace(RegExp(' ?' + y), '');
+        };
+        (a[n] = a[n] || []).hide = h;
+        setTimeout(function () {
+          i();
+          h.end = null;
+        }, c);
+        h.timeout = c;
+      })(window, document.documentElement, 'async-hide', 'dataLayer', 1500, {
+        'GTM-W752VQ4': true,
+      });
+    </script>
+    <meta http-equiv="Content-Type" content="text/html;" charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,height=device-height,initial-scale=1,user-scalable=no,maximum-scale=1"
+    />
+    <meta name="theme-color" content="#003ca6" />
+    <meta
+      name="google-site-verification"
+      content="yV4qS935mcdyB2BTIFVuIa3k9Z01wx9lZbNBL3VWjhU"
+    />
+    <link
+      rel="stylesheet"
+      href="https://www.plugshare.com/css/font-awesome.min.css"
+    />
+    <script type="text/javascript">
+      var ascendeum = window.ascendeum || {};
+      window.ascendeum = ascendeum;
+      (function () {
+        var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+        o.async = true;
+        o.src = 'https://assets.plugshare.com/lib/asc_prebid.js';
+        s.parentNode.insertBefore(o, s);
+        o.addEventListener(
+          'load',
+          function (e) {
+            console.log('hb scipt loaded ', e);
+            ascendeum.ready = true;
+          },
+          false
+        );
+      })();
+
+      function loadAd(aduName) {
+        const TIMEOUT = 20 * 1000;
+        let timer = 0;
+        let timerId = setInterval(function () {
+          if (timer > TIMEOUT) {
+            clearInterval(timerId);
+            return;
+          }
+          if (window.ascendeum.ready) {
+            clearInterval(timerId);
+            ascendeum.displayAd(aduName);
+          }
+          timer = timer + 50;
+        }, 50);
+      }
+    </script>
+    <meta name="robots" content="noarchive" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title
+      ng-bind="(ngMeta.title ? ngMeta.title : 'PlugShare - Find Electric Vehicle Charging Locations Near You')"
+    >
+      PlugShare - Find Electric Vehicle Charging Locations Near You
+    </title>
+    <meta name="description" content="{{ ngMeta.description }}" />
+    <link rel="canonical" href="{{ ngMeta.url }}" />
+    <meta
+      property="og:title"
+      content="West Yellowstone Supercharger | PlugShare"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="/location/88345" />
+    <meta
+      property="og:image"
+      content="https://photos.plugshare.com/photos/928577.jpg"
+    />
+    <meta
+      property="og:description"
+      content="The Superchargers are located in the parking lot of the Grizzly &amp; Wolf Discovery Center."
+    />
+    <meta name="apple-itunes-app" content="app-id=421788217" />
+    <script src="/env.js"></script>
+    <base href="/" />
+    <link rel="stylesheet" href="styles/vendor-120f72a0f4.css" />
+    <link rel="stylesheet" href="styles/app-57ddffdb75.css" />
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBuVZnEnDMdsBrmXqF06xlmdq5N_NTK7wQ&libraries=places&language=en"></script>
+    <script src="https://s3.amazonaws.com/plugshare.production.assets/assets/amazon-cognito-identity.min.js"></script>
+    <script src="https://s3.amazonaws.com/plugshare.production.assets/assets/aws-sdk-2.600.0.min.js"></script>
+    <script
+      defer
+      data-domain="plugshare.com"
+      src="https://plausible.io/js/plausible.js"
+    ></script>
+    <script>
+      const country_code = 'US';
+      // console.log('country code: ' + country_code);
+    </script>
+    <script>
+      const policy_version = '20200103'; // version of current privacy policy provided by server
+    </script>
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <div
+      id="toast-container"
+      ng-class="{planner: tripPlanner, modal: isModalOpen()}"
+    ></div>
+    <div id="noscroll">
+      <div id="plugshare">
+        <!--[if lt IE 10]>
+          <p class="browser">
+            You are using an <strong>outdated</strong> browser. Please
+            <a href="https://browsehappy.com/">upgrade your browser</a> to
+            improve your experience.
+          </p>
+        <![endif]-->
+        <div ui-view></div>
+        <script src="scripts/vendor-51c9db3100.js"></script>
+        <script src="scripts/app-0fac5b3cce.js"></script>
+      </div>
+      <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "LocalBusiness",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "bestRating": 10,
+            "worstRating": 1,
+
+            "ratingValue": "10.0",
+
+            "reviewCount": "219"
+          },
+
+          "name": "West Yellowstone Supercharger",
+
+          "description": "The Superchargers are located in the parking lot of the Grizzly &amp; Wolf Discovery Center.",
+
+          "image": "https://photos.plugshare.com/photos/928577.jpg",
+
+          "url": "/location/88345",
+          "publicAccess": true
+        }
+      </script>
+      <script>
+        var prerender_latitude = null;
+        var prerender_longitude = null;
+      </script>
+    </div>
+  </body>
+</html>
