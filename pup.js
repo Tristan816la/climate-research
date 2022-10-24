@@ -11,7 +11,7 @@ const MAX = parseInt(process.argv[3]);
 const TIMEOUT = 2 ** 31 - 1;
 const MAX_CONCURRENCY = 4;
 const CANDIDATE_FILE = "public_candidates.txt";
-const WRITE_THRESHOLD = 5;
+const WRITE_THRESHOLD = 1000;
 
 const s3 = new S3Client({
   region: "us-west-1",
