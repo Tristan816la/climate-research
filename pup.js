@@ -32,13 +32,13 @@ const streamToString = (stream) =>
   });
 
 const uploadToS3 = async (config) => {
-  const parallelUploads3 = new Upload({
-    client: s3,
-    queueSize: 4, // optional concurrency configuration
-    leavePartsOnError: false, // optional manually handle dropped parts
-    params: config,
-  });
-  await parallelUploads3.done();
+  // const parallelUploads3 = new Upload({
+  //   client: s3,
+  //   queueSize: 4, // optional concurrency configuration
+  //   leavePartsOnError: false, // optional manually handle dropped parts
+  //   params: config,
+  // });
+  // await parallelUploads3.done();
 };
 
 const candidates = new Set();

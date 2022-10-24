@@ -23,13 +23,13 @@ const s3 = new S3Client({
 const Bucket = "plugshare-data";
 
 const uploadToS3 = async (config) => {
-  const parallelUploads3 = new Upload({
-    client: s3,
-    queueSize: 4, // optional concurrency configuration
-    leavePartsOnError: false, // optional manually handle dropped parts
-    params: config,
-  });
-  await parallelUploads3.done();
+  //   const parallelUploads3 = new Upload({
+  //     client: s3,
+  //     queueSize: 4, // optional concurrency configuration
+  //     leavePartsOnError: false, // optional manually handle dropped parts
+  //     params: config,
+  //   });
+  //   await parallelUploads3.done();
 };
 
 (async () => {
@@ -66,13 +66,13 @@ const uploadToS3 = async (config) => {
       const number = request.url().slice(request.url().lastIndexOf("/") + 1);
       if (request.url() === `${APISITE}${number}` && !isNaN(number)) {
         try {
-          if (response.status() == 429) {
+          if (response.status() === 429) {
             console.log(
               `will retry ${SITE}${number}, retry after ${response["_headers"]["retry-after"]}`
             );
             await cluster.queue(`${SITE}${number}`);
           } else if (response.status() !== 200) {
-            throw new Error("API error: " + response.status());
+            await new Promise((resolve) => setTimeout(resolve, 10000));
           } else {
             const res = await response.json();
             if (
