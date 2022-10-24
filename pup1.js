@@ -72,7 +72,7 @@ const uploadToS3 = async (config) => {
             );
             await cluster.queue(`${SITE}${number}`);
           } else if (response.status() !== 200) {
-            await new Promise((resolve) => setTimeout(resolve, 10000));
+            await new Promise((resolve) => setTimeout(resolve, 5000));
           } else {
             const res = await response.json();
             if (

@@ -94,7 +94,7 @@ const candidates = new Set();
         const number = request.url().slice(request.url().lastIndexOf("/") + 1);
         if (request.url() === `${APISITE}${number}` && !isNaN(number)) {
           try {
-            if (response.status() == 429) {
+            if (response.status() === 429) {
               console.log(`will retry ${SITE}${number}`);
               await cluster.queue(`${SITE}${number}`);
             } else if (response.status() !== 200) {
