@@ -141,20 +141,21 @@ const candidates = new Set();
     }
 
     await cluster.idle();
-    await cluster.close();
-    try {
-      await uploadToS3({
-        Bucket,
-        Key: `US-${prev}-${MAX}.json`,
-        Body: JSON.stringify(data),
-      });
-      await uploadToS3({
-        Bucket,
-        Key: `USCandidates-${MIN}-${MAX}.txt`,
-        Body: usCandidates.join(","),
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    await cluster.close().then(async () => {
+      try {
+        await uploadToS3({
+          Bucket,
+          Key: `US-${prev}-${MAX}.json`,
+          Body: JSON.stringify(data),
+        });
+        await uploadToS3({
+          Bucket,
+          Key: `USCandidates-${MIN}-${MAX}.txt`,
+          Body: usCandidates.join(","),
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    });
   })();
 });
