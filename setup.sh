@@ -1,7 +1,6 @@
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 npm i
-sudo npm i -g pm2
 
 cd node_modules/puppeteer/.local-chromium/linux-982053/chrome-linux
 sudo apt-get update
