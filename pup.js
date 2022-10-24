@@ -32,13 +32,13 @@ const streamToString = (stream) =>
   });
 
 const uploadToS3 = async (config) => {
-  // const parallelUploads3 = new Upload({
-  //   client: s3,
-  //   queueSize: 4, // optional concurrency configuration
-  //   leavePartsOnError: false, // optional manually handle dropped parts
-  //   params: config,
-  // });
-  // await parallelUploads3.done();
+  const parallelUploads3 = new Upload({
+    client: s3,
+    queueSize: 4, // optional concurrency configuration
+    leavePartsOnError: false, // optional manually handle dropped parts
+    params: config,
+  });
+  await parallelUploads3.done();
 };
 
 const candidates = new Set();
@@ -95,6 +95,7 @@ const candidates = new Set();
         if (request.url() === `${APISITE}${number}` && !isNaN(number)) {
           try {
             if (response.status() == 429) {
+              console.log(`will retry ${SITE}${number}`);
               await cluster.queue(`${SITE}${number}`);
             } else if (response.status() !== 200) {
               throw new Error("API error: " + response.status());
