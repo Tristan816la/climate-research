@@ -23,13 +23,13 @@ const s3 = new S3Client({
 const Bucket = "plugshare-data";
 
 const uploadToS3 = async (config) => {
-  //   const parallelUploads3 = new Upload({
-  //     client: s3,
-  //     queueSize: 4, // optional concurrency configuration
-  //     leavePartsOnError: false, // optional manually handle dropped parts
-  //     params: config,
-  //   });
-  //   await parallelUploads3.done();
+  const parallelUploads3 = new Upload({
+    client: s3,
+    queueSize: 4, // optional concurrency configuration
+    leavePartsOnError: false, // optional manually handle dropped parts
+    params: config,
+  });
+  await parallelUploads3.done();
 };
 
 (async () => {
